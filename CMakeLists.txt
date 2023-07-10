@@ -4,7 +4,7 @@ project(Scions)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-option(BUILD_SHARED_LIBS "True when building shared library" True)
+set(BUILD_SHARED_LIBS False)
 
 # Set target output directory
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)

@@ -7,5 +7,6 @@
 
 int main(){
     hello();
+    Adder a;
     return 0;
 }
