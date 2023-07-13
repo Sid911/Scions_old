@@ -1,6 +1,7 @@
-set(FILES "")
-set(SUBDIRECTORIES Foo execution_provider common graph)
-set(RELATIVE_PATH "include/${PROJECT_NAME}")
+set(FILES IExecutionProvider.cpp)
+set(SUBDIRECTORIES "")
+set(RELATIVE_PATH src/${PROJECT_NAME}/execution_provider)
+
 
 
 #Add subdirectories

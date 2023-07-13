@@ -1,6 +1,6 @@
-set(FILES "")
-set(SUBDIRECTORIES Foo execution_provider common graph)
-set(RELATIVE_PATH "include/${PROJECT_NAME}")
+set(FILES Node.h )
+set(SUBDIRECTORIES "")
+set(RELATIVE_PATH include/${PROJECT_NAME}/graph)
 
 
 #Add subdirectories

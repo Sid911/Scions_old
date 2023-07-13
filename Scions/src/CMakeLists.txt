@@ -1,5 +1,5 @@
 set(FILES "")
-set(SUBDIRECTORIES Foo ExecutionProvider)
+set(SUBDIRECTORIES Foo execution_provider common)
 set(RELATIVE_PATH src/${PROJECT_NAME})
 
 

@@ -1,6 +1,6 @@
 set(FILES IExecutionProvider.h )
 set(SUBDIRECTORIES "")
-set(RELATIVE_PATH "include/${PROJECT_NAME}/ExecutionProvider")
+set(RELATIVE_PATH include/${PROJECT_NAME}/execution_provider)
 
 
 #Add subdirectories

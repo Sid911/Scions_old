@@ -1,6 +1,6 @@
-set(FILES IExecutionProvider.cpp)
+set(FILES "")
 set(SUBDIRECTORIES "")
-set(RELATIVE_PATH "src/${PROJECT_NAME}/ExecutionProvider")
+set(RELATIVE_PATH include/${PROJECT_NAME}/common)
 
 
 #Add subdirectories
