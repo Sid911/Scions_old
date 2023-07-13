@@ -19,7 +19,7 @@ endif ()
 # Rename build targets
 set_target_properties(${PROJECT_NAME} PROPERTIES
         DEBUG_POSTFIX "${STATIC_POSTFIX}-d"
-        RELEASE_POSTFIX "${STATIC_POSTFIX}"
+        RELEASE_POSTFIX ""
         MINSIZEREL_POSTFIX "${STATIC_POSTFIX}-mr"
         RELWITHDEBINFO_POSTFIX "${STATIC_POSTFIX}-rd"
 )

@@ -1,6 +1,6 @@
 set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/library.cpp")
 set(SUBDIRECTORIES "")
-set(RELATIVE_PATH "src/Foo")
+set(RELATIVE_PATH "src/${PROJECT_NAME}/Foo")
 
 
 #Add subdirectories

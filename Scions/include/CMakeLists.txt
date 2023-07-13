@@ -1,6 +1,6 @@
 set(FILES "")
-set(SUBDIRECTORIES "Foo")
-set(RELATIVE_PATH "include")
+set(SUBDIRECTORIES Foo ExecutionProvider)
+set(RELATIVE_PATH "include/${PROJECT_NAME}")
 
 
 #Add subdirectories

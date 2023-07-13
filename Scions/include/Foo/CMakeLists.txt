@@ -1,6 +1,6 @@
 set(FILES "${CMAKE_CURRENT_SOURCE_DIR}/library.h")
 set(SUBDIRECTORIES "")
-set(RELATIVE_PATH "include/Foo")
+set(RELATIVE_PATH "include/${PROJECT_NAME}/Foo")
 
 
 #Add subdirectories
