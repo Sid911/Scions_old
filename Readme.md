@@ -29,4 +29,6 @@ be possible.
 
 
 ### Intended Architecture of Scions
+This is the current plan, Onnx Runtime is the biggest inspiration while bulding this.
 
+![ScionsArchitecturev1.png](docs/images/ScionsArchitecturev1.png)
