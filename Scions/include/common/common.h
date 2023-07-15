@@ -2,16 +2,20 @@
 // Created by sid on 13/7/23.
 //
 
-#ifndef SCIONS_COMMON_H
-#define SCIONS_COMMON_H
+#pragma once
+
+#include <cmath>
+#include <cstdint>
+#include <cstring>
+#include <iterator>
+#include <list>
+#include <memory>
+#include <optional>
+#include <span>
+#include <sstream>
+#include <string>
+#include <vector>
 
 #include "result.h"
 
-#include <cstdint>
-#include <vector>
-#include <string>
-#include <optional>
-#include <cstring>
-#include <cmath>
-
-#endif //SCIONS_COMMON_H
+#define SC_DATATYPE float

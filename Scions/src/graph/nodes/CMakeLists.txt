@@ -1,6 +1,6 @@
-set(FILES Node.h )
-set(SUBDIRECTORIES nodes)
-set(RELATIVE_PATH include/${PROJECT_NAME}/graph)
+set(FILES Flatten.cpp Dense.cpp)
+set(SUBDIRECTORIES "")
+set(RELATIVE_PATH src/${PROJECT_NAME}/graph/nodes)
 
 
 #Add subdirectories

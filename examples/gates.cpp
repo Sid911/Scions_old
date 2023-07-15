@@ -1,10 +1,12 @@
 //
 // Created by sid on 10/7/23.
+
 //
-
-#include "execution_provider/IExecutionProvider.h"
+#include "vector"
+#include "algorithm"
+using namespace std;
 int main(){
-    sc::ep::IExecutionProvider executionProvider;
-
+    vector<int> a = {1, 2, 3, 4, 5, 6, 7, 8, 9 , 10};
+    ranges::sort(a);
     return 0;
 }

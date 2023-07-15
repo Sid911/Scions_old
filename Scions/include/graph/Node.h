@@ -1,19 +1,25 @@
 //
 // Created by sid on 13/7/23.
 //
+#pragma once
 
-#ifndef SCIONS_NODE_H
-#define SCIONS_NODE_H
+#include "common/common.h"
+#include "NodeComputeInfo.h"
 
+namespace sc::graph::node {
 
-namespace sc::graph {
+class Node {
+    const char *domainName;
+    const char *opName;
+    const char *opCodeName;
 
-    class Node {
-    public:
+  public:
+     Node(const char *domainName, const char *opName, const char *opCodeName,
+         NodeComputeInfo computeInfo);
 
-    };
+    Node(const char *domainName, const char *opName, const char *opCodeName, uint size);
 
-} // sc
-// graph
+    NodeComputeInfo computeInfo;
+};
 
-#endif //SCIONS_NODE_H
+} // namespace sc::graph

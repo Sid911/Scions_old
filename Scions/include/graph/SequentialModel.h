@@ -1,9 +1,8 @@
 //
 // Created by sid on 13/7/23.
 //
+#pragma once
 
-#ifndef SCIONS_SEQUENTIALMODEL_H
-#define SCIONS_SEQUENTIALMODEL_H
 #include "common/common.h"
 #include "Node.h"
 
@@ -24,4 +23,4 @@ namespace sc::graph {
 } // sc
 // graph
 
-#endif //SCIONS_SEQUENTIALMODEL_H
+

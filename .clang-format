@@ -1,0 +1,4 @@
+Language: Cpp
+BasedOnStyle: LLVM
+SortIncludes: CaseInsensitive
+IndentWidth: 4

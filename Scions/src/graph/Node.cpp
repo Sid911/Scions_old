@@ -4,8 +4,17 @@
 
 #include "graph/Node.h"
 
+namespace sc::graph::node {
 
-namespace sc::graph {
+Node::Node(const char *domainName, const char *opName, const char *opCodeName,
+           NodeComputeInfo computeInfo)
+    : domainName(domainName), opName(opName), opCodeName(opCodeName),
+      computeInfo(std::move(computeInfo)) {}
 
-} // sc
-// graph
+Node::Node(const char *domainName, const char *opName, const char *opCodeName,
+           uint size)
+    : domainName(domainName), opName(opName), opCodeName(opCodeName) {
+    computeInfo = NodeComputeInfo{{{size}}, {{size}}};
+}
+
+} // namespace sc::graph::node
