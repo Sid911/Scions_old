@@ -4,11 +4,13 @@
 
 #include "graph/SequentialModel.h"
 
-namespace sc::graph {
-SequentialModel::SequentialModel(std::vector<Node>, std::string){};
-SequentialModel::SequentialModel(std::vector<Node>) {}
+#include <utility>
 
-Result<bool, std::string> SequentialModel::Add(Node &) {
+namespace sc::graph {
+SequentialModel::SequentialModel(std::vector<node::Node> nodes, std::string name): nodes(std::move(nodes)), name(std::move(name)){};
+SequentialModel::SequentialModel(std::vector<node::Node>) {}
+
+Result<bool, std::string> SequentialModel::Add(node::Node &) {
     return Result<bool, std::string>(sc::result::types::Ok());
 }
 } // namespace sc::graph

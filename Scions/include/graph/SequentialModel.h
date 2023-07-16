@@ -10,13 +10,13 @@ namespace sc::graph {
 
     class SequentialModel {
     public:
-        SequentialModel(std::vector<Node>, std::string);
-        SequentialModel(std::vector<Node>);
+        SequentialModel(std::vector<node::Node>, std::string);
+        SequentialModel(std::vector<node::Node>);
         SequentialModel() = default;
 
-        Result<bool, std::string> Add(Node&);
+        Result<bool, std::string> Add(node::Node&);
     private:
-        std::vector<Node> nodes;
+        std::vector<node::Node> nodes;
         std::string name;
     };
 

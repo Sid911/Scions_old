@@ -6,10 +6,10 @@
 #include "graph/nodes/NodeTypes.h"
 namespace sc::graph::node {
 
-Flatten::Flatten(const char *domainName, const NodeComputeInfo &computeInfo)
+Flatten::Flatten(const NodeComputeInfo &computeInfo, const char *domainName)
     : Node(domainName, FLATTEN_NAME, FLATTEN_CODE_NAME, computeInfo) {}
 
-Flatten::Flatten(const char *domainName, uint size)
+Flatten::Flatten(uint size, const char *domainName)
     : Node(domainName, FLATTEN_NAME, FLATTEN_CODE_NAME, size) {}
 
 } // namespace sc::graph::node

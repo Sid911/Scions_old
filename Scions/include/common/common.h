@@ -19,3 +19,4 @@
 #include "result.h"
 
 #define SC_DATATYPE float
+#define DEFAULT_DOMAIN "Scions.ai"

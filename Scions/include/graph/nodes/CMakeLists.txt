@@ -1,4 +1,4 @@
-set(FILES Flatten.h Dense.h)
+set(FILES Flatten.h Dense.h Relu.h)
 set(SUBDIRECTORIES "")
 set(RELATIVE_PATH include/${PROJECT_NAME}/graph/nodes)
 

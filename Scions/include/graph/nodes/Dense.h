@@ -11,8 +11,8 @@ namespace sc::graph::node {
 
 class Dense : public node::Node {
   public:
-    Dense(const char *domainName, const NodeComputeInfo &computeInfo);
+    Dense(const NodeComputeInfo &computeInfo, const char *domainName = DEFAULT_DOMAIN);
 
-    Dense(const char *domainName, uint size);
+    Dense(uint size, const char *domainName = DEFAULT_DOMAIN);
 };
 } // namespace sc::graph::node

@@ -10,9 +10,9 @@ namespace sc::graph::node {
 
 class Flatten : public Node {
   public:
-    Flatten(const char *domainName, const NodeComputeInfo &computeInfo);
+    Flatten(const NodeComputeInfo &computeInfo, const char *domainName = DEFAULT_DOMAIN);
 
-    Flatten(const char *domainName, uint size);
+    Flatten(uint size, const char *domainName = DEFAULT_DOMAIN);
 };
 
 } // namespace sc::graph::node

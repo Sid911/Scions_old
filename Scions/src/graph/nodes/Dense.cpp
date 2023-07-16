@@ -6,9 +6,11 @@
 #include "graph/nodes/NodeTypes.h"
 namespace sc::graph::node {
 
-Dense::Dense(const char *domainName, const NodeComputeInfo &computeInfo)
+Dense::Dense(const NodeComputeInfo &computeInfo, const char *domainName)
     : Node(domainName, DENSE_NAME, DENSE_CODE_NAME, computeInfo) {}
 
-Dense::Dense(const char *domainName, uint size)
+Dense::Dense(uint size, const char *domainName)
     : Node(domainName, DENSE_NAME, DENSE_CODE_NAME, size) {}
+
+
 } // namespace sc::graph::node
