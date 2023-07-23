@@ -1,5 +1,5 @@
 set(FILES "")
-set(SUBDIRECTORIES Foo execution_provider common)
+set(SUBDIRECTORIES Foo execution_provider common graph)
 set(RELATIVE_PATH src/${PROJECT_NAME})
 
 

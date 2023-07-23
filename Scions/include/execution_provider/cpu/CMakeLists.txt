@@ -1,7 +1,9 @@
-set(FILES IExecutionProvider.h )
-set(SUBDIRECTORIES cpu cuda)
-set(RELATIVE_PATH include/${PROJECT_NAME}/execution_provider)
+set(FILES CPUExecutionProvider.h )
+set(SUBDIRECTORIES "")
+set(RELATIVE_PATH include/${PROJECT_NAME}/execution_provider/cpu)
 
+
+find_package(Eigen3 REQUIRED)
 
 #Add subdirectories
 foreach (VAR ${SUBDIRECTORIES})

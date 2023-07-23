@@ -1,4 +1,4 @@
-set(FILES Flatten.cpp Dense.cpp)
+set(FILES Node.cpp)
 set(SUBDIRECTORIES "")
 set(RELATIVE_PATH src/${PROJECT_NAME}/graph/nodes)
 

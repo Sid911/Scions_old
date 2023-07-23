@@ -1,6 +1,6 @@
-set(FILES IExecutionProvider.h )
-set(SUBDIRECTORIES cpu cuda)
-set(RELATIVE_PATH include/${PROJECT_NAME}/execution_provider)
+set(FILES MemoryObject.h MemoryRef.h)
+set(SUBDIRECTORIES "")
+set(RELATIVE_PATH include/${PROJECT_NAME}/graph/memory)
 
 
 #Add subdirectories

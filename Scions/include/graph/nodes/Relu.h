@@ -4,12 +4,12 @@
 
 #pragma once
 #include "common/common.h"
-#include "graph/Node.h"
+#include "Node.h"
 namespace sc::graph::node {
 
 class Relu : public Node {
 
-    Relu(const NodeComputeInfo &computeInfo, const char *domainName = DEFAULT_DOMAIN);
+    Relu(const OpComputeInfo &computeInfo, const char *domainName = DEFAULT_DOMAIN);
 
     Relu(uint size, const char *domainName = DEFAULT_DOMAIN);
 };

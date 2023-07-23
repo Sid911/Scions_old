@@ -5,14 +5,13 @@
 #pragma once
 
 #include "common/common.h"
-#include "graph/Node.h"
+#include "Node.h"
 
 namespace sc::graph::node {
 
 class Dense : public node::Node {
   public:
-    Dense(const NodeComputeInfo &computeInfo, const char *domainName = DEFAULT_DOMAIN);
-
-    Dense(uint size, const char *domainName = DEFAULT_DOMAIN);
+    explicit Dense(uint size,
+                             const char *domainName = DEFAULT_DOMAIN);
 };
 } // namespace sc::graph::node

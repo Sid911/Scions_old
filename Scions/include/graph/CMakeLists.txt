@@ -1,5 +1,5 @@
-set(FILES Node.h )
-set(SUBDIRECTORIES nodes)
+set(FILES OpComputeInfo.h SequentialModel.h CompiledGraph.h)
+set(SUBDIRECTORIES nodes ops memory)
 set(RELATIVE_PATH include/${PROJECT_NAME}/graph)
 
 

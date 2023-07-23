@@ -8,7 +8,7 @@
    Mathieu Stefani, 03 mai 2016
 
    This header provides a Result type that can be used to replace exceptions in
-   code that has to handle error.
+   opCode that has to handle error.
 
    Result<T, E> can be used to return and propagate an error to the caller.
    Result<T, E> is an algebraic data type that can either Ok(T) to represent

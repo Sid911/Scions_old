@@ -14,6 +14,7 @@
 #include <span>
 #include <sstream>
 #include <string>
+#include <variant>
 #include <vector>
 
 #include "result.h"

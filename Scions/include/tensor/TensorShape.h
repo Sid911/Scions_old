@@ -10,11 +10,12 @@ class TensorShape {
     TensorShape() = default;
 
     // Initialize with a shape from std::initializer_list
-    TensorShape(std::initializer_list<ShapeIndexType> init_list)
+    constexpr TensorShape(const std::initializer_list<ShapeIndexType> init_list)
         : shape_(init_list) {}
 
     // Initialize with a shape from std::vector
-    explicit TensorShape(const std::vector<ShapeIndexType> &shape) : shape_(shape) {}
+    constexpr explicit TensorShape(const std::vector<ShapeIndexType> &shape)
+        : shape_(shape) {}
 
     // Initialize with a shape from std::span
     explicit TensorShape(const std::span<ShapeIndexType> &shape)
@@ -22,12 +23,21 @@ class TensorShape {
 
     // Initialize with a shape from std::array
     template <std::size_t N>
-    explicit TensorShape(const std::array<ShapeIndexType, N> &shape)
+    constexpr explicit TensorShape(const std::array<ShapeIndexType, N> &shape)
         : shape_(shape.begin(), shape.end()) {}
 
     // Initialize with a shape from std::list
     explicit TensorShape(const std::list<ShapeIndexType> &shape)
         : shape_(shape.begin(), shape.end()) {}
+
+    [[nodiscard]] constexpr TensorShape
+    copyWithValues(const std::initializer_list<ShapeIndexType> init) const {
+        std::vector<ShapeIndexType> copyShape(shape_.size());
+        for (int i = 0; i < init.size() && i < copyShape.size(); ++i) {
+            copyShape[i] = *(init.begin() + i);
+        }
+        return TensorShape(copyShape);
+    }
 
     // Represent as a string
     [[nodiscard]] std::string toString() const {
@@ -46,7 +56,9 @@ class TensorShape {
     }
 
     // Convert shape vector into a span
-    std::span<ShapeIndexType> toSpan() { return {shape_.data(), shape_.size()}; }
+    std::span<ShapeIndexType> toSpan() {
+        return {shape_.data(), shape_.size()};
+    }
 
     [[nodiscard]] std::span<const ShapeIndexType> toSpan() const {
         return {shape_.data(), shape_.size()};

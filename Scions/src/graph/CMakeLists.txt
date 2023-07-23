@@ -1,5 +1,5 @@
-set(FILES Node.cpp SequentialModel.cpp)
-set(SUBDIRECTORIES nodes)
+set(FILES SequentialModel.cpp)
+set(SUBDIRECTORIES nodes memory)
 set(RELATIVE_PATH src/${PROJECT_NAME}/graph)
 
 

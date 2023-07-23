@@ -7,7 +7,7 @@
 
 namespace sc::graph::node {
 
-Relu::Relu(const NodeComputeInfo &computeInfo, const char *domainName)
+Relu::Relu(const OpComputeInfo &computeInfo, const char *domainName)
     : Node(domainName, RELU_NAME, RELU_CODE_NAME, computeInfo) {}
 
 Relu::Relu(uint size, const char *domainName)

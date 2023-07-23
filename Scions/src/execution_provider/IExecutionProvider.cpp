@@ -5,7 +5,6 @@
 #include "execution_provider/IExecutionProvider.h"
 
 
-sc::ep::IExecutionProvider::IExecutionProvider() noexcept = default;
 
 sc::ep::IExecutionProvider::~IExecutionProvider() {
 

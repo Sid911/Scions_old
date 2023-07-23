@@ -9,7 +9,7 @@ So there are two part answers for this, 1st being "*why another ML library?*" th
 - I wanted to learn more about how the theoretical and implementation level machine learning works. The best way of doing it is to 
 make a ML library itself because you get to actually read and implement the details rather than just relying on other frameworks
 to make the **Magic Happen**. Also, I would get to learn how to build actual low level library for executing parallel and
-and performant code in different accelerator environments.
+and performant opCode in different accelerator environments.
 - There are certain limitation in different runtimes provided by big frameworks like **Tensorflow**, **Pytorch** and
 *(Although to a less extent)* **Onnx Runtime** which are hard to overcome in a normal setting which I am trying to achieve.
 

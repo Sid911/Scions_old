@@ -5,12 +5,19 @@
 #include "graph/nodes/Dense.h"
 #include "graph/nodes/NodeTypes.h"
 namespace sc::graph::node {
-
-Dense::Dense(const NodeComputeInfo &computeInfo, const char *domainName)
-    : Node(domainName, DENSE_NAME, DENSE_CODE_NAME, computeInfo) {}
-
-Dense::Dense(uint size, const char *domainName)
-    : Node(domainName, DENSE_NAME, DENSE_CODE_NAME, size) {}
-
+using namespace std;
+Dense::Dense(const uint size, const char *domainName)
+    : Node(domainName, DENSE_NAME, DENSE_CODE_NAME, op::OpComputeInfo({}, {}),
+           size,
+           {
+               make_shared<memory::MemoryObject>(
+                   memory::MemoryObject(tensor::TensorShape({UINT16_MAX, size}),
+                                        tensor::TensorShape({1, 0}))),
+               make_shared<memory::MemoryObject>(
+                   memory::MemoryObject(tensor::TensorShape({size}))),
+           }) {
+    AddOp(op::MatMul(op::OpComputeInfo({}, {nodeObjs.at(0)})));
+    AddOp(op::MatAdd(op::OpComputeInfo({nodeObjs.at(0)}, {nodeObjs.at(1)})));
+}
 
 } // namespace sc::graph::node

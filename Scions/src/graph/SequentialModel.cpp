@@ -4,13 +4,34 @@
 
 #include "graph/SequentialModel.h"
 
-#include <utility>
 
 namespace sc::graph {
-SequentialModel::SequentialModel(std::vector<node::Node> nodes, std::string name): nodes(std::move(nodes)), name(std::move(name)){};
-SequentialModel::SequentialModel(std::vector<node::Node>) {}
+SequentialModel::SequentialModel(
+    vector<variant<node::Node, Op>> nodes,
+    vector<shared_ptr<memory::MemoryObject>> memoryGraph, std::string name)
+    : nodes(std::move(nodes)), name(std::move(name)),
+      memoryGraph(std::move(memoryGraph)) {}
 
-Result<bool, std::string> SequentialModel::Add(node::Node &) {
-    return Result<bool, std::string>(sc::result::types::Ok());
+[[maybe_unused]] SequentialModel::SequentialModel(
+    std::vector<std::variant<node::Node, Op>> nodes)
+    : nodes(std::move(nodes)), name("Sequential Model") {}
+
+Result<bool, std::string>
+SequentialModel::Add(std::variant<node::Node, Op> &node) {
+    nodes.push_back(node);
 }
+
+CompiledGraph SequentialModel::compileGraph() {
+
+    std::shared_ptr<std::vector<Op>> graph;
+    for (auto &&node : nodes) {
+        if (std::holds_alternative<Op>(node)) [[likely]] {
+            graph->push_back(std::get<Op>(node));
+        }
+        // Todo: This test compilation does absolutely nothing
+    }
+
+    return CompiledGraph{memoryGraph, graph};
+}
+
 } // namespace sc::graph
