@@ -2,8 +2,11 @@
 // Created by sid on 10/7/23.
 
 //
-#include "graph/nodes/Dense.h"
-#include "graph/SequentialModel.h"
+
+#include "core/graph/memory/MemoryObject.h"
+#include "core/graph/nodes/Node.h"
+#include "core/graph/OpComputeInfo.h"
+#include "core/graph/SequentialModel.h"
 #include "vector"
 using namespace std;
 

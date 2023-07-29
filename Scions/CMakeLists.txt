@@ -1,12 +1,24 @@
 add_library(${PROJECT_NAME} "")
-add_library(Scions::Scions ALIAS ${PROJECT_NAME})
 
-set(SCIONS_EXPORT_FILE "Scions-Exports")
-install(TARGETS ${PROJECT_NAME} EXPORT ${SCIONS_EXPORT_FILE})
+add_library(${PROJECT_NAME}_Common INTERFACE "")
+
+add_library(${PROJECT_NAME}_EPCUDA STATIC "")
+add_library(${PROJECT_NAME}_EPCPU STATIC "")
+
+add_library(Scions::Scions ALIAS ${PROJECT_NAME})
+add_library(Scions::CUDA ALIAS ${PROJECT_NAME}_EPCUDA)
+add_library(Scions::CPU ALIAS ${PROJECT_NAME}_EPCPU)
+add_library(Scions::Common ALIAS ${PROJECT_NAME}_Common)
+
+#set(SCIONS_EXPORT_FILE "Scions-Exports")
+#set(SCIONS_COMMON_EXPORT_FILE "Scions-Common-Exports")
+#
+#install(TARGETS ${PROJECT_NAME}_Common EXPORT ${SCIONS_COMMON_EXPORT_FILE})
+#install(TARGETS ${PROJECT_NAME} EXPORT ${SCIONS_EXPORT_FILE})
 
 target_include_directories(${PROJECT_NAME} PUBLIC
-        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
-        "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>"
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
+        "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>/include/"
         "$<INSTALL_INTERFACE:include>"
 )
 
@@ -27,23 +39,28 @@ include("GenerateExportHeader")
 generate_export_header(${PROJECT_NAME})
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/scions_export.h DESTINATION "include")
 
-add_subdirectory(include)
-add_subdirectory(src)
+target_link_libraries(${PROJECT_NAME} PRIVATE Scions::Common)
+target_link_libraries(${PROJECT_NAME}_EPCUDA PRIVATE Scions::Common)
+target_link_libraries(${PROJECT_NAME}_EPCPU PRIVATE Scions::Common)
 
+#set(SCIONS_CONFIG_DIR "lib/cmake/${PROJECT_NAME}")
+#configure_file(${Scions_SOURCE_DIR}/cmake/ScionsConfig.cmake.in ${Scions_BINARY_DIR}/${SCIONS_CONFIG_DIR}/ScionsConfig.cmake)
+#install(FILES ${Scions_BINARY_DIR}/${SCIONS_CONFIG_DIR}/ScionsConfig.cmake DESTINATION ${SCIONS_CONFIG_DIR})
+#install(EXPORT ${SCIONS_COMMON_EXPORT_FILE} DESTINATION ${SCIONS_CONFIG_DIR} NAMESPACE "Scions::Common")
+#install(EXPORT ${SCIONS_EXPORT_FILE} DESTINATION ${SCIONS_CONFIG_DIR} NAMESPACE "Scions::")
 
-set(SCIONS_CONFIG_DIR "lib/cmake/${PROJECT_NAME}")
-configure_file(${Scions_SOURCE_DIR}/cmake/ScionsConfig.cmake.in ${Scions_BINARY_DIR}/${SCIONS_CONFIG_DIR}/ScionsConfig.cmake)
-install(FILES ${Scions_BINARY_DIR}/${SCIONS_CONFIG_DIR}/ScionsConfig.cmake DESTINATION ${SCIONS_CONFIG_DIR})
-install(EXPORT ${SCIONS_EXPORT_FILE} DESTINATION ${SCIONS_CONFIG_DIR} NAMESPACE "Scions::")
+add_subdirectory(core)
+add_subdirectory(execution_provider)
+add_subdirectory(common)
 
 
 # uninstall target
-if(NOT TARGET uninstall)
-  configure_file(
-    "${Scions_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
-    "${Scions_BINARY_DIR}/cmake_uninstall.cmake"
-    IMMEDIATE @ONLY)
-
-  add_custom_target(uninstall
-    COMMAND ${CMAKE_COMMAND} -P ${Scions_BINARY_DIR}/cmake_uninstall.cmake)
-endif()
+#if(NOT TARGET uninstall)
+#  configure_file(
+#    "${Scions_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
+#    "${Scions_BINARY_DIR}/cmake_uninstall.cmake"
+#    IMMEDIATE @ONLY)
+#
+#  add_custom_target(uninstall
+#    COMMAND ${CMAKE_COMMAND} -P ${Scions_BINARY_DIR}/cmake_uninstall.cmake)
+#endif()
