@@ -1,5 +1,5 @@
 set(H_FILES CompiledGraph.h OpComputeInfo.h SequentialModel.h)
-set(S_FILES "")
+set(S_FILES SequentialModel.cpp)
 set(SUBDIRECTORIES memory nodes ops)
 set(H_RELATIVE_PATH include/${PROJECT_NAME}/core/graph)
 

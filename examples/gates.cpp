@@ -7,6 +7,7 @@
 #include "core/graph/nodes/Node.h"
 #include "core/graph/OpComputeInfo.h"
 #include "core/graph/SequentialModel.h"
+#include "execution_provider/cpu/CPUExecutionProvider.h"
 #include "vector"
 using namespace std;
 
@@ -14,6 +15,7 @@ int main() {
     using namespace sc::graph;
     using namespace sc::memory;
     using namespace sc::graph::op;
+    using namespace sc::ep;
     vector<MemoryObjectPtr> allocations = {
         CreateMemoryObjectPtr({1}, "input_layer"),   // 0
         CreateMemoryObjectPtr({1}, "input_reshape"), // 1
@@ -69,5 +71,8 @@ int main() {
     auto model = SequentialModel(nodes, allocations, "Linear Model");
     auto compiled_graph = model.compileGraph();
 
+    cpu::CPUExecutionProvider cpuProvider = cpu::CPUExecutionProvider();
+    cpuProvider.Initialize();
+    cpuProvider.Compile(compiled_graph);
     return 0;
 }

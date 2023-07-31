@@ -1,5 +1,5 @@
-set(H_FILES Dense.h Flatten.h Node.h NodeTypes.h Relu.h)
-set(S_FILES Dense.cpp Flatten.cpp Node.cpp Relu.cpp)
+set(H_FILES Node.h NodeTypes.h)
+set(S_FILES Node.cpp)
 set(SUBDIRECTORIES "")
 set(H_RELATIVE_PATH include/${PROJECT_NAME}/core/graph/nodes)
 

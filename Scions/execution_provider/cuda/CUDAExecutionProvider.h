@@ -5,7 +5,6 @@
 #pragma once
 
 #include "../../common/common.h"
-#include "../../include/graph/CompiledGraph.h"
 #include "../IExecutionProvider.h"
 
 namespace sc::ep::cuda {
