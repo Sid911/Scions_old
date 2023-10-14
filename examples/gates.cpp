@@ -1,22 +1,25 @@
-//
-// Created by sid on 10/7/23.
-
-//
-
-#include "core/graph/memory/MemoryObject.h"
-#include "core/graph/nodes/Node.h"
-#include "core/graph/OpComputeInfo.h"
-#include "core/graph/SequentialModel.h"
-#include "execution_provider/cpu/CPUExecutionProvider.h"
 #include "vector"
+#include "core/mem/mem_desc.h"
 using namespace std;
+
+std::expected<int, std::string> getInt(std::string arg) {
+    try {
+        return std::stoi(arg);
+    }
+    catch (...) {
+        return std::unexpected{std::string(arg + ": Error")};
+    }
+}
 
 int main() {
     using namespace sc::graph;
     using namespace sc::memory;
     using namespace sc::graph::op;
     using namespace sc::ep;
-    vector<MemoryObjectPtr> allocations = {
+
+
+    // device mem
+    const vector<MemoryObjectPtr> mem = {
         CreateMemoryObjectPtr({1}, "input_layer"),   // 0
         CreateMemoryObjectPtr({1}, "input_reshape"), // 1
         CreateMemoryObjectPtr({1}, "weight_l1"),     // 2
@@ -27,49 +30,24 @@ int main() {
         CreateMemoryObjectPtr({1}, "activation_l2"), // 7
     };
 
-    vector<variant<node::Node, Op>> nodes = {
+    const vector<variant<node::Node, Op>> nodes = {
         // Reshape
-        MatReshape(OpComputeInfo({allocations.at(0)}, {allocations.at(1)})),
+        MatReshape(0, 1),
 
         // Dense Layer 1
-        MatMul(OpComputeInfo({allocations.at(1), allocations.at(2)},
-                             {allocations.at(4)})),
-
-        MatAdd(OpComputeInfo(
-            {
-                allocations.at(4),
-                allocations.at(3),
-            },
-            {
-                allocations.at(4),
-            })),
-
-        Relu(OpComputeInfo({allocations.at(4)}, {allocations.at(4)})),
+        MatMul(1, 2, 4),
+        MatAdd(4, 3, 4),
+        Relu(4, 4),
 
         // Dense Layer 2
-        MatMul(OpComputeInfo(
-            {
-                allocations.at(4),
-                allocations.at(5),
-            },
-            {
-                allocations.at(7),
-            })),
+        MatMul(4, 5, 7),
+        MatAdd(7, 6, 7),
 
-        MatAdd(OpComputeInfo(
-            {
-                allocations.at(7),
-                allocations.at(6),
-            },
-            {
-                allocations.at(7),
-            })),
-
-        Relu(OpComputeInfo({allocations.at(7)}, {})),
+        Relu(7, 7),
     };
 
-    auto model = SequentialModel(nodes, allocations, "Linear Model");
-    auto compiled_graph = model.compileGraph();
+    auto model = SequentialModel(nodes, mem, "Linear Model");
+    const auto compiled_graph = model.compileGraph();
 
     cpu::CPUExecutionProvider cpuProvider = cpu::CPUExecutionProvider();
     cpuProvider.Initialize();

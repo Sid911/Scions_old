@@ -1,10 +1,7 @@
-set(FILES common.h result.h)
+set(FILES common.h)
+set(S_FILES "")
 set(SUBDIRECTORIES "")
 set(RELATIVE_PATH include/${PROJECT_NAME}/common)
-
-target_include_directories(${PROJECT_NAME}_Common INTERFACE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-)
 
 #Add subdirectories
 foreach (VAR ${SUBDIRECTORIES})
@@ -13,6 +10,12 @@ endforeach ()
 
 if (FILES)
     # Add source files
-    target_sources(${PROJECT_NAME}_Common PUBLIC ${FILES})
-#    install(FILES ${FILES} DESTINATION ${RELATIVE_PATH})
+#    target_sources(${PROJECT_NAME} INTERFACE ${FILES})
+    install(FILES ${FILES} DESTINATION ${RELATIVE_PATH})
+endif ()
+
+
+if (S_FILES)
+    # Add source files
+    target_sources(${PROJECT_NAME} PUBLIC ${S_FILES})
 endif ()

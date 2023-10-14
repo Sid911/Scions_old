@@ -1,23 +1,12 @@
 //
-// Created by sid on 13/7/23.
+// Created by sid on 13/10/23.
 //
-
 #pragma once
 
-#include <cmath>
-#include <cstdint>
-#include <cstring>
-#include <iterator>
-#include <list>
-#include <memory>
+#include <iostream>
 #include <optional>
-#include <span>
-#include <sstream>
-#include <string>
-#include <variant>
 #include <vector>
-
-#include "result.h"
-
-#define SC_DATATYPE float
-#define DEFAULT_DOMAIN "Scions.ai"
+#include <memory>
+#include <expected>
+#include <cstdint>
+#include <algorithm>
