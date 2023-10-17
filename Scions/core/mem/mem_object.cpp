@@ -4,6 +4,5 @@
 
 #include "mem_object.h"
 
-constexpr scions::mem::MemObject::MemObject(uint64_t size): size(size) {
-
-}
+namespace scions::mem {
+} // namespace scions::mem

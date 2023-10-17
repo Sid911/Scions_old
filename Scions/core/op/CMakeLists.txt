@@ -1,4 +1,4 @@
-set(H_FILES "op.h")
+set(H_FILES basic_op.h op.h op_io.h)
 set(S_FILES "op.cpp" )
 set(SUBDIRECTORIES "")
 set(H_RELATIVE_PATH include/${PROJECT_NAME}/core/op/)

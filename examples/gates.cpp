@@ -1,5 +1,8 @@
 #include "vector"
 #include "core/mem/mem_desc.h"
+#include "core/op/op.h"
+#include "core/op/basic_op.h"
+
 using namespace std;
 
 std::expected<int, std::string> getInt(std::string arg) {
@@ -12,45 +15,34 @@ std::expected<int, std::string> getInt(std::string arg) {
 }
 
 int main() {
-    using namespace sc::graph;
-    using namespace sc::memory;
-    using namespace sc::graph::op;
-    using namespace sc::ep;
+    // Alright here will be the example start
+    using namespace scions;
+
+    static constexpr array<mem::StaticMemObject, 3> objects = {
+        mem::StaticMemObject(1020, "inp1"),
+        mem::StaticMemObject(2,4,5, "inp2"),
+        mem::StaticMemObject({2,3,4}, "inp3"),
+    };
+    // Maybe even dynamicMemObject initialized at runtime
+    // Pass the objects to MemDescriptor
+    static constexpr mem::MemDescriptor desc = mem::MemDescriptor(objects);
+
+    // what are different ways an op can take reference to its input from MemObjects passed to
+    // MemDescriptor. One option is using indices but that seems wierd
+    static constexpr auto arr = std::array<uint32_t ,2>({2,3});
+    static constexpr auto arr2 = std::array<uint32_t ,1>({4});
 
 
-    // device mem
-    const vector<MemoryObjectPtr> mem = {
-        CreateMemoryObjectPtr({1}, "input_layer"),   // 0
-        CreateMemoryObjectPtr({1}, "input_reshape"), // 1
-        CreateMemoryObjectPtr({1}, "weight_l1"),     // 2
-        CreateMemoryObjectPtr({1}, "bias_l1"),       // 3
-        CreateMemoryObjectPtr({1}, "activation_l1"), // 4
-        CreateMemoryObjectPtr({1}, "weight_l2"),     // 5
-        CreateMemoryObjectPtr({1}, "bias_l2"),       // 6
-        CreateMemoryObjectPtr({1}, "activation_l2"), // 7
+    static constexpr auto arr1_1 = std::array<uint32_t ,3>({5,7,1});
+    static constexpr auto arr1_2 = std::array<uint32_t ,1>({8});
+
+    static constexpr array<op::OpDesc, 2> ops = {
+        op::TensorOpDesc<2,1>(arr, arr2),
+        op::TensorOpDesc<3,1>(arr1_1, arr1_2),
     };
 
-    const vector<variant<node::Node, Op>> nodes = {
-        // Reshape
-        MatReshape(0, 1),
-
-        // Dense Layer 1
-        MatMul(1, 2, 4),
-        MatAdd(4, 3, 4),
-        Relu(4, 4),
-
-        // Dense Layer 2
-        MatMul(4, 5, 7),
-        MatAdd(7, 6, 7),
-
-        Relu(7, 7),
-    };
-
-    auto model = SequentialModel(nodes, mem, "Linear Model");
-    const auto compiled_graph = model.compileGraph();
-
-    cpu::CPUExecutionProvider cpuProvider = cpu::CPUExecutionProvider();
-    cpuProvider.Initialize();
-    cpuProvider.Compile(compiled_graph);
-    return 0;
+    /**
+     *  This seems pretty bad if user had to put in all the indexes for each memory
+     *  instance. Maybe generate reference from memDescriptor?
+     */
 }
