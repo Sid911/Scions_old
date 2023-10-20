@@ -4,10 +4,16 @@
 #pragma once
 
 #include "common/common.h"
-
-namespace scions::op{
-struct OpIOInfo{
-    std::span<const uint32_t> inputs;
-    std::span<const uint32_t> outputs;
+#include "core/mem/mem_desc.h"
+namespace scions::op {
+struct OpIOIndicesInfo {
+    const std::array<const size_t, SC_OP_INPUT_MAX> inputs;
+    const std::array<const size_t, SC_OP_OUTPUT_MAX> outputs;
 };
-}
+
+
+struct OpIONameInfo {
+    const std::array<const size_t, SC_OP_INPUT_MAX> inputs;
+    const std::array<const size_t, SC_OP_OUTPUT_MAX> outputs;
+};
+} // namespace scions::op

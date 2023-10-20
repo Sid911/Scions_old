@@ -3,10 +3,10 @@ cmake_minimum_required(VERSION 3.26)
 
 set(CMAKE_CUDA_ARCHITECTURES 75)
 set(CMAKE_CUDA_COMPILER /usr/local/cuda/bin/nvcc)
-set(CMAKE_CXX_FLAGS "-stdlib=libc++ -pedantic") # Using clang-18-dev as the compiler
+set(CMAKE_CXX_FLAGS "-stdlib=libc++ -pedantic -O3") # Using clang-18-dev as the compiler
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-project(Scions CXX CUDA C)
+project(Scions CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(BUILD_SHARED_LIBS False)

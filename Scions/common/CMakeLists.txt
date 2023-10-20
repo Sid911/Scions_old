@@ -1,4 +1,4 @@
-set(FILES common.h)
+set(FILES common.h d_type.h)
 set(S_FILES "")
 set(SUBDIRECTORIES "")
 set(RELATIVE_PATH include/${PROJECT_NAME}/common)

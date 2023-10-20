@@ -14,13 +14,14 @@ namespace scions::op {
 class OpDesc {
   public:
     int32_t op_id;
-    OpIOInfo info;
+    OpIOIndicesInfo info;
 
-    constexpr OpDesc(int32_t id, OpIOInfo info, const std::string_view &desc)
+    constexpr OpDesc(int32_t id, OpIOIndicesInfo info, const std::string_view &desc)
         : op_id(id), op_desc(desc), info(info) {}
 
-    constexpr OpDesc(int32_t id, const std::span<const uint32_t> &inp,
-                     const std::span<const uint32_t> &out,
+    constexpr OpDesc(int32_t id,
+                     const std::array<const size_t, SC_OP_INPUT_MAX>& inp,
+                     const std::array<const size_t, SC_OP_OUTPUT_MAX>& out,
                      const std::string_view &desc)
         : op_id(id), op_desc(desc), info({inp, out}) {}
 
