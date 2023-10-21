@@ -1,6 +1,4 @@
-//
-// Created by sid on 13/10/23.
-//
+
 #pragma once
 
 #include <algorithm>
