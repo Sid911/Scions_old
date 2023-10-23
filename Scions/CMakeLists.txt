@@ -1,4 +1,5 @@
 add_library(${PROJECT_NAME} "")
+
 add_library(Scions::Scions ALIAS ${PROJECT_NAME})
 set(SCIONS_EXPORT_FILE "Scions-Exports")
 #
@@ -9,6 +10,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>/include/"
         "$<INSTALL_INTERFACE:include>"
 )
+
+
 
 # Rename build targets
 set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -28,6 +31,7 @@ install(EXPORT ${SCIONS_EXPORT_FILE} DESTINATION ${SCIONS_CONFIG_DIR} NAMESPACE 
 
 add_subdirectory(core)
 add_subdirectory(common)
+add_subdirectory(ep)
 
 
 # uninstall target

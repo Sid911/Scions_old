@@ -1,8 +1,8 @@
-set(H_FILES "")
-set(FILES "" )
-set(SUBDIRECTORIES op mem graph)
-set(H_RELATIVE_PATH include/${PROJECT_NAME}/core/)
-set(S_RELATIVE_PATH src/${PROJECT_NAME}/core/)
+set(H_FILES sequential_graph.h)
+set(S_FILES "")
+set(SUBDIRECTORIES "")
+set(H_RELATIVE_PATH include/${PROJECT_NAME}/core/graph/)
+set(S_RELATIVE_PATH src/${PROJECT_NAME}/core/graph/)
 
 
 #Add subdirectories
@@ -18,7 +18,6 @@ if (H_FILES)
 endif ()
 
 if (S_FILES)
-
     target_sources(${PROJECT_NAME} PRIVATE ${S_FILES})
     install(FILES ${S_FILES} DESTINATION ${S_RELATIVE_PATH})
 endif ()

@@ -26,7 +26,6 @@ class StaticMemObject {
     std::array<uint32_t, SC_MAX_DIMS> shape;
 
     /**
-     * @fn constexpr StaticMemObject::StaticMemObject(const uint32_t size, std::string_view name, const d_type::TYPE type = d_type::F16)
      * @brief Constructs a StaticMemObject with the given size, name, and data type.
      * @param size The total size of the memory object in bytes.
      * @param name The name of the memory object.
