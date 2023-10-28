@@ -1,5 +1,5 @@
 set(H_FILES runtime_sequential_graph.h)
-set(S_FILES bruh.cpp runtime_sequential_graph.cpp)
+set(S_FILES runtime_sequential_graph.cpp)
 set(SUBDIRECTORIES "")
 set(H_RELATIVE_PATH include/${PROJECT_NAME}/ep/common)
 set(S_RELATIVE_PATH src/${PROJECT_NAME}/ep/common)

@@ -6,7 +6,8 @@ add_library(${PROJECT_NAME}_EP_COMMON INTERFACE "")
 add_library(Scions::CPU ALIAS ${PROJECT_NAME}_CPU)
 add_library(Scions::EP_COMMON ALIAS ${PROJECT_NAME}_EP_COMMON)
 
-find_package(Eigen3)
+find_package(MKL CONFIG REQUIRED PATHS $ENV{MKLROOT})
+message(STATUS "Imported oneMKL targets: ${MKL_IMPORTED_TARGETS}")
 
 target_include_directories(${PROJECT_NAME}_CPU PUBLIC
         "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/Scions>"
