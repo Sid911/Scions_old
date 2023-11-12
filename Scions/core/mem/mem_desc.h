@@ -19,15 +19,22 @@ template <size_t N> class MemDescriptor {
 
     /**
      * @class MemDescriptor
-     * @brief Represents a memory descriptor for a collection of static memory objects.
+     * @brief Represents a memory descriptor for a collection of static memory
+     * objects.
      *
-     * The MemDescriptor class provides a way to manage a collection of static memory objects.
-     * It calculates the total size of the memory objects and provides methods to access the individual memory objects.
+     * The MemDescriptor class provides a way to manage a collection of static
+     * memory objects. It calculates the total size of the memory objects and
+     * provides methods to access the individual memory objects.
      *
      * @tparam N The number of memory objects in the collection.
      */
-    constexpr MemDescriptor(const std::array<StaticMemObject, N> &objects)
-        : memoryObjects(buildMemObjects(objects)) {
+    constexpr MemDescriptor(const std::array<StaticMemObject, N> &objects): memoryObjects() {
+
+        for (int i = 0; i < N; i++) {
+            memoryObjects[i] =
+                MemObject(objects[i].total_size, objects[i].name, i,
+                          objects[i].data_type);
+        }
         uint64_t bytes = 0;
         for (int i = 0; i < N; i++) {
             bytes += objects[i].total_size;
@@ -42,9 +49,10 @@ template <size_t N> class MemDescriptor {
     /**
      * @brief Get a reference to a memory object by name.
      *
-     * This method searches for a memory object with the given name in the collection
-     * of memory objects. If found, it returns a reference to the memory object.
-     * Otherwise, it throws a runtime_error indicating that the memory object was not found.
+     * This method searches for a memory object with the given name in the
+     * collection of memory objects. If found, it returns a reference to the
+     * memory object. Otherwise, it throws a runtime_error indicating that the
+     * memory object was not found.
      *
      * @param search The name of the memory object to search for.
      * @return A MemRef object representing the reference to the memory object.
@@ -65,8 +73,11 @@ template <size_t N> class MemDescriptor {
 
         return MemRef{index, memoryObjects[index].name};
     }
+
+    uint64_t getTotalBytes() const { return total_bytes; }
+
   private:
-    u_int64_t total_bytes;
+    uint64_t total_bytes;
 
     static consteval std::array<MemObject, N>
     buildMemObjects(const std::array<StaticMemObject, N> &obj) {

@@ -28,11 +28,11 @@ class OpDesc {
      * This constructor is used to create an OpDesc object with the specified parameters.
      *
      * @param id The unique identifier of the operation.
-     * @param info The information about input and output indices of the operation.
+     * @param info_ The information about input and output indices of the operation.
      * @param desc The description of the operation.
      */
-    constexpr OpDesc(int32_t id, OpIOIndicesInfo info, const std::string_view &desc)
-        : op_id(id), op_desc(desc), info(info) {}
+    constexpr OpDesc(int32_t id, OpIOIndicesInfo info_, const std::string_view &desc)
+        : op_id(id), op_desc(desc), info(info_) {}
 
     /**
      * @brief Constructs an OpDesc object.

@@ -1,5 +1,7 @@
 ## Scions : A cpp ML library because why not
 
+### 🚧 WIP : Scions is in build phase, not indented to be used (rather it can't be used because basic requirements haven't met)
+
 Scions aims to be a refreshingly fast and optimised way of writing which is very simple to understand and extend. While 
 being designed to build and deploy ML models in edge friendly way where the focus is on local execution.
 
