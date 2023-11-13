@@ -5,17 +5,9 @@
 #pragma once
 #include "common/common.h"
 #include "op.h"
+#include "op_ids.h"
+
 namespace scions::op::tensor{
-
-static const int32_t TENSOR_ADD_OP_ID = 1;
-static const int32_t TENSOR_SUBTRACT_OP_ID = 2;
-static const int32_t TENSOR_MULTIPLY_OP_ID = 3;  // New operation ID
-static const int32_t TENSOR_DIVIDE_OP_ID = 4;    // New operation ID
-static const int32_t TENSOR_EXPONENTIATE_OP_ID = 5;  // New operation ID
-static const int32_t TENSOR_LOG_OP_ID = 6;           // New operation ID
-static const int32_t TENSOR_SQUARE_ROOT_OP_ID = 7;  // New operation ID
-static const int32_t TENSOR_MEAN_OP_ID = 8;          // New operation ID
-
 class TensorAddOpDesc : public OpDesc {
   public:
     constexpr TensorAddOpDesc(const std::array<const size_t, SC_OP_INPUT_MAX> &input,
@@ -71,12 +63,12 @@ class TensorExponentiateOpDesc : public OpDesc {
   public:
     constexpr TensorExponentiateOpDesc(const std::array<const size_t, SC_OP_INPUT_MAX> &input,
                                        const std::array<const size_t, SC_OP_OUTPUT_MAX> &output)
-        : OpDesc(TENSOR_EXPONENTIATE_OP_ID, input, output, "Tensor Exponentiate Op") {}
+        : OpDesc(TENSOR_EXPONENTIATION_OP_ID, input, output, "Tensor Exponentiate Op") {}
 
     constexpr TensorExponentiateOpDesc(const size_t &input1,
                                        const size_t &input2,
                                        const size_t &output1)
-        : OpDesc(TENSOR_EXPONENTIATE_OP_ID, {input1, input2}, {output1}, "Tensor Exponentiate Op") {}
+        : OpDesc(TENSOR_EXPONENTIATION_OP_ID, {input1, input2}, {output1}, "Tensor Exponentiate Op") {}
 };
 
 // Class for describing a logarithm operation

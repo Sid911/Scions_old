@@ -44,8 +44,8 @@ int main() {
     // set CPUExecutionProvider Options
     constexpr cpu::CPUOptions options{true};
     //  set the provider
-    cpu::CPUExecutionProvider provider =
-        cpu::CPUExecutionProvider(graph, options);
+    auto provider =
+        cpu::CPUStaticExecutionProvider(res, options);
 
     // Generate data for
     auto result = provider.allocateAll();

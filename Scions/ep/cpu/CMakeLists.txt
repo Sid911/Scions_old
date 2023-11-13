@@ -1,6 +1,6 @@
-set(H_FILES cpu_ep.h cpu_execution_stats.h mem/cpu_mem_object.h)
-set(S_FILES cpu_ep.cpp mem/cpu_mem_object.cpp)
-set(SUBDIRECTORIES "")
+set(H_FILES cpu_ep.h cpu_execution_stats.h)
+set(S_FILES cpu_ep.cpp)
+set(SUBDIRECTORIES mem op)
 set(H_RELATIVE_PATH include/${PROJECT_NAME}/ep/cpu)
 set(S_RELATIVE_PATH src/${PROJECT_NAME}/ep/cpu)
 

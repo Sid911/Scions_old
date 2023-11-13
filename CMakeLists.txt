@@ -5,7 +5,7 @@ set(CMAKE_CUDA_COMPILER /usr/local/cuda/bin/nvcc)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-project(Scions CXX)
+project(Scions CXX C)
 
 set(CMAKE_CXX_STANDARD 23)
 set(BUILD_SHARED_LIBS False)

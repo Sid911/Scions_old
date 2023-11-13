@@ -4,13 +4,9 @@
 #pragma once
 #include "common/common.h"
 #include "op.h"
+#include "op_ids.h"
 
 namespace scions::op::mem {
-
-static const int32_t MEM_COPY_OP_ID = -1;
-static const int32_t MEM_FILL_RANDOM_OP_ID = -2;
-static const int32_t MEM_FREE_OP_ID = -3;
-
 class MemCopy : public OpDesc {
   public:
     constexpr MemCopy(const std::array<const size_t, SC_OP_INPUT_MAX> &input,
