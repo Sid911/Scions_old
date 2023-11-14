@@ -14,7 +14,7 @@ using namespace std;
     // Alright here will be the example start
     using namespace scions;
 
-    static constexpr array<mem::StaticMemObject, 4> objects = {
+    static constexpr array objects = {
         mem::StaticMemObject(16, "inp1"),
         mem::StaticMemObject(1, 2, 3, "inp2"),
         mem::StaticMemObject({1024*10, 1024*10}, "inp3"),
@@ -28,7 +28,7 @@ using namespace std;
         op::tensor::TensorMultiplyOpDesc(0, 3, 2),
     };
 
-    constexpr graph::SequentialGraph<2, 4> graph = {tensors, desc};
+    constexpr graph::SequentialGraph<2,4> graph = {tensors, desc};
 
     return graph;
 }

@@ -8,6 +8,8 @@
 #include "core/op/op.h"
 #include "ep/common/runtime_sequential_graph.h"
 #include "mkl.h"
+#include "fmt/std.h"
+
 namespace scions::ep::cpu {
 struct CPUOptions {
     bool is_debug;

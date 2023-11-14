@@ -13,6 +13,13 @@
 #include <variant>
 #include <vector>
 
+// FMT
+#include <fmt/chrono.h>
+#include <fmt/color.h>
+#include <fmt/compile.h>
+#include <fmt/core.h>
+#include <fmt/std.h>
+
 #ifndef SC_MAX_DIMS
 #define SC_MAX_DIMS 5
 #endif

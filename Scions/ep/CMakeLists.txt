@@ -11,6 +11,7 @@ message(STATUS "Imported oneMKL targets: ${MKL_IMPORTED_TARGETS}")
 
 target_include_directories(${PROJECT_NAME}_CPU PUBLIC
         "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/Scions>"
+        "$<BUILD_INTERFACE:${FMT_SOURCE_DIR}/${FMT_INC_DIR}>"
         "$<BUILD_INTERFACE:${MKLROOT}>"
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>/include/"
         "$<INSTALL_INTERFACE:include>"

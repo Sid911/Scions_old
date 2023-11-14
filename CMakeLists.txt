@@ -1,11 +1,13 @@
 cmake_minimum_required(VERSION 3.26)
 
-set(CMAKE_CUDA_ARCHITECTURES 75)
-set(CMAKE_CUDA_COMPILER /usr/local/cuda/bin/nvcc)
+#set(CMAKE_CUDA_ARCHITECTURES 75)
+#set(CMAKE_CUDA_COMPILER /usr/local/cuda/bin/nvcc)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 project(Scions CXX C)
+
+include(cmake/CPM.cmake)
 
 set(CMAKE_CXX_STANDARD 23)
 set(BUILD_SHARED_LIBS False)
@@ -19,6 +21,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(COMMON_FLAGS -pedantic -Wshadow -march=native )
 message("-- Compiler ID: ${CMAKE_CXX_COMPILER_ID}")
 
+CPMAddPackage("gh:fmtlib/fmt#10.1.1")
 # Set different flags for different modes
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(COMMON_FLAGS ${COMMON_FLAGS} -O1 -g)

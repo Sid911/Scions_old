@@ -8,10 +8,9 @@ install(TARGETS ${PROJECT_NAME} EXPORT ${SCIONS_EXPORT_FILE})
 target_include_directories(${PROJECT_NAME} PUBLIC
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
         "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>/include/"
+        "$<BUILD_INTERFACE:${FMT_SOURCE_DIR}/${FMT_INC_DIR}>"
         "$<INSTALL_INTERFACE:include>"
 )
-
-
 
 # Rename build targets
 set_target_properties(${PROJECT_NAME} PROPERTIES
@@ -20,6 +19,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
         MINSIZEREL_POSTFIX "${STATIC_POSTFIX}-mr"
         RELWITHDEBINFO_POSTFIX "${STATIC_POSTFIX}-rd"
 )
+
 include("GenerateExportHeader")
 generate_export_header(${PROJECT_NAME})
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/scions_export.h DESTINATION ${PROJECT_NAME}/include)
